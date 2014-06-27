@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+{% extends 'blog/base.html' %}
+
+{% block header %}blog title{% endblock %}
+
+{% block content %}
+	{% for post in posts %}
+	<div class = "post">
+                <div class = "container" style="width:800px; margin:0 auto; background-image:url('{{STATIC_URL}}bg.png');
+                            height:60px; padding:20px;">
+                </div>
+                <div class = "container" style="width:800px; margin:0 auto; background-image:url('{{STATIC_URL}}bg.png'); 
+                            height:auto; padding:20px;">
+                    <div class = "container" style="border: 1px solid #1f1f1f;
+                            margin:0 auto; background-image:url('{{STATIC_URL}}dog.jpg');
+                            height:300px; width:auto; ground-repeat:no-repeat; background-position:center; background-size:cover;">
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <a href = "{{post.get_absolute_url}}" class = "navbar-brand-2" style="font-size:40px;">
+                                {{post.title}} 
+                            </a>
+                            <br><br>Posted on <time datetime="{{post.created|date:"c"}}">{{post.created|date}}</time> | <B>Tags:</B> {{post.description}}
+            
+                    </div>
+                    <br>
+                    <BR></BR><p>{{post.content|safe}}</p>
+                </div>
+	</div>
+	{% endfor %}
+        
+{% endblock %}
